@@ -1,0 +1,42 @@
+# Your own data never goes into this repository.
+private/
+**/private/
+output/
+**/output/
+
+# Real exports, configs and generated files. Only Koinly's templates and the invented example
+# are tracked; a new example folder has to be added here on purpose.
+*.csv
+*.tsv
+*.json
+*.xlsx
+*.xls
+*.ods
+config.toml
+!**/templates/koinly/*.csv
+!**/templates/koinly/*.tsv
+!**/examples/safetrade-quantus/**/*.csv
+!**/examples/safetrade-quantus/**/*.json
+!**/examples/safetrade-quantus/config.toml
+
+# Secrets and archives
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.kdbx
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*seed*
+*mnemonic*
+*secret*
+
+# Python
+__pycache__/
+*.pyc
+.venv/

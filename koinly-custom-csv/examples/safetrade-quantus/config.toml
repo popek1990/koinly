@@ -1,0 +1,62 @@
+# Example config for the invented SafeTrade + Quantus history in this folder.
+# Every address, hash and amount here is made up. Copy this file to private/config.toml
+# and replace the values with your own; private/ is ignored by git.
+
+# Zone the output files are written in. Pick the same zone in Koinly's import dialog.
+timezone = "Europe/Berlin"
+output_dir = "output"
+# Also write a UTC copy in output/utc/ (import it with "Auto-detect / UTC").
+utc_copy = true
+
+# How each asset is written for Koinly. ID: numbers come from Koinly's Markets page;
+# SYMBOL:CONTRACT picks the exact token (here: Arbitrum One USDT and USDC).
+[assets]
+QTC = "ID:56784085"
+USDT = "USDT:0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+USDC = "USDC:0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+
+[[wallets]]
+name = "Quantus wallet"
+adapter = "quantus"
+output = "quantus.csv"
+asset = "QTC"
+snapshot = "input/quantus-snapshot.json"
+addresses = [
+  "qzEXAMPLEUserWalletA111111111111111111111111UsrA",
+  "qzEXAMPLEUserWalletB111111111111111111111111UsrB",
+]
+
+# Incoming transfers from these senders get a Koinly tag.
+[wallets.sender_tags]
+"qzEXAMPLEAirdropPayer11111111111111111111111Drop" = "airdrop"
+
+[[wallets]]
+name = "SafeTrade"
+adapter = "safetrade"
+output = "safetrade.csv"
+exports = ["input/safetrade/*.csv"]
+# Rows you typed in yourself (Universal columns), with the zone they are written in.
+manual_files = [{ path = "input/manual/safetrade-typed-in.csv", timezone = "Europe/Berlin" }]
+
+# SafeTrade currency code -> asset key above. On SafeTrade, QTC is Qubitcoin.
+[wallets.symbols]
+QUANTUS = "QTC"
+USDT = "USDT"
+USDC = "USDC"
+
+# What the exchange shows as your balance now. The build stops if the file disagrees.
+[wallets.expected_balances]
+QTC = "0.37"
+USDT = "3.226481181"
+USDC = "0"
+
+# Check USDT/USDC deposits and withdrawals against the EVM chain.
+[evm]
+rpc = "https://arb1.arbitrum.io/rpc"
+snapshot = "input/evm-snapshot.json"
+# Your EVM addresses that Koinly already knows (synced by address or API).
+koinly_wallets = ["0x00000000000000000000000000000000000000a1"]
+
+[evm.tokens]
+"0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9" = { asset = "USDT", decimals = 6 }
+"0xaf88d065e77c8cc2239327c5edb3a432268e5831" = { asset = "USDC", decimals = 6 }

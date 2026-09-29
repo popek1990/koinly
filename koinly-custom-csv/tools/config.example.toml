@@ -1,0 +1,66 @@
+# Copy this file to private/config.toml and fill in your own values.
+# private/ is ignored by git: your addresses, exports and snapshots stay on your computer.
+# Paths below are relative to the config file itself (so to private/).
+# A complete, working example with invented data: examples/safetrade-quantus/config.toml
+
+# Zone the output files are written in. Pick exactly this zone in Koinly's import dialog.
+# Use an IANA name (Europe/London, Europe/Berlin, America/New_York...) or UTC.
+timezone = "UTC"
+output_dir = "output"
+# Also write a UTC copy in output/utc/ (import it with "Auto-detect / UTC").
+utc_copy = true
+
+# How each asset is written for Koinly. Use ID:<number> from Koinly's Markets page or
+# SYMBOL:CONTRACT so Koinly cannot pick a different token with the same symbol.
+[assets]
+QTC = "ID:56784085"                                      # Quantus in Koinly
+USDT = "USDT:0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9" # USDT on Arbitrum One
+USDC = "USDC:0xaf88d065e77c8cc2239327c5edb3a432268e5831" # USDC on Arbitrum One
+
+# ---------------------------------------------------------------- a Quantus wallet
+[[wallets]]
+name = "Quantus wallet"
+adapter = "quantus"
+output = "quantus.csv"
+asset = "QTC"
+snapshot = "quantus-snapshot.json"     # written by: koinlycsv.py fetch
+addresses = [
+  "qz...your first address...",
+  "qz...your second address...",
+]
+
+# Optional: incoming transfers from these senders get a Koinly tag.
+[wallets.sender_tags]
+# "qz...the address that paid your airdrop..." = "airdrop"
+
+# ---------------------------------------------------------------- a SafeTrade account
+[[wallets]]
+name = "SafeTrade"
+adapter = "safetrade"
+output = "safetrade.csv"
+exports = ["safetrade/*.csv"]          # the trades and transactions exports
+# Optional: rows typed in by hand (Universal columns), with the zone they are written in.
+# manual_files = [{ path = "safetrade-typed-in.csv", timezone = "Europe/London" }]
+
+# SafeTrade code -> asset key from [assets]. On SafeTrade, QTC is Qubitcoin.
+[wallets.symbols]
+QUANTUS = "QTC"
+USDT = "USDT"
+USDC = "USDC"
+
+# Optional but recommended: the balances the exchange shows now.
+[wallets.expected_balances]
+# QTC = "0"
+# USDT = "0"
+
+# ---------------------------------------------------------------- optional EVM check
+# Checks USDT/USDC deposits and withdrawals against the chain. Remove the section to skip it.
+[evm]
+rpc = "https://arb1.arbitrum.io/rpc"
+snapshot = "evm-snapshot.json"         # written by: koinlycsv.py fetch
+# Your EVM addresses that Koinly already syncs; transfers to other addresses will be broken.
+koinly_wallets = ["0x...your address..."]
+
+[evm.tokens]
+"0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9" = { asset = "USDT", decimals = 6 }
+"0xaf88d065e77c8cc2239327c5edb3a432268e5831" = { asset = "USDC", decimals = 6 }

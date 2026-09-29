@@ -1,0 +1,75 @@
+{
+ "source": "https://sqm.quantus.com/v1/graphql",
+ "fetched_at": "2026-04-02T12:00:00Z",
+ "block": {
+  "height": 1009,
+  "hash": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "timestamp": "2026-04-02T12:00:00.000+00:00"
+ },
+ "addresses": [
+  "qzEXAMPLEUserWalletA111111111111111111111111UsrA",
+  "qzEXAMPLEUserWalletB111111111111111111111111UsrB"
+ ],
+ "accounts": {
+  "qzEXAMPLEUserWalletA111111111111111111111111UsrA": {
+   "free": "20776571056179",
+   "reserved": "0"
+  },
+  "qzEXAMPLEUserWalletB111111111111111111111111UsrB": {
+   "free": "15497578367179",
+   "reserved": "0"
+  }
+ },
+ "transfers": [
+  {
+   "id": "0000001001-e0000-000001",
+   "from_id": "qzEXAMPLEAirdropPayer11111111111111111111111Drop",
+   "to_id": "qzEXAMPLEUserWalletA111111111111111111111111UsrA",
+   "amount": "53890572127543",
+   "fee": "2100000000",
+   "block_height": 1001,
+   "timestamp": "2026-03-26T10:04:04.000+00:00",
+   "extrinsic_id": "0x5000000000000000000000000000000000000000000000000000000000000001"
+  },
+  {
+   "id": "0000001001-e0000-000002",
+   "from_id": "qzEXAMPLEAirdropPayer11111111111111111111111Drop",
+   "to_id": "qzEXAMPLEUserWalletB111111111111111111111111UsrB",
+   "amount": "10848904299600",
+   "fee": "2100000000",
+   "block_height": 1001,
+   "timestamp": "2026-03-26T10:04:04.000+00:00",
+   "extrinsic_id": "0x5000000000000000000000000000000000000000000000000000000000000001"
+  },
+  {
+   "id": "0000001002-e0000-000001",
+   "from_id": "qzEXAMPLEUserWalletA111111111111111111111111UsrA",
+   "to_id": "qzEXAMPLESafeTradeDeposit1111111111111111111Depo",
+   "amount": "38363000000000",
+   "fee": "1001071364",
+   "block_height": 1002,
+   "timestamp": "2026-03-26T13:51:34.000+00:00",
+   "extrinsic_id": "0x5000000000000000000000000000000000000000000000000000000000000002"
+  },
+  {
+   "id": "0000001003-e0000-000001",
+   "from_id": "qzEXAMPLESafeTradeHotWallet11111111111111111HotW",
+   "to_id": "qzEXAMPLEUserWalletB111111111111111111111111UsrB",
+   "amount": "9900000000000",
+   "fee": "1100000000",
+   "block_height": 1003,
+   "timestamp": "2026-03-30T11:02:13.000+00:00",
+   "extrinsic_id": "0x5000000000000000000000000000000000000000000000000000000000000003"
+  },
+  {
+   "id": "0000001004-e0000-000001",
+   "from_id": "qzEXAMPLEUserWalletB111111111111111111111111UsrB",
+   "to_id": "qzEXAMPLEUserWalletA111111111111111111111111UsrA",
+   "amount": "5250000000000",
+   "fee": "1325932421",
+   "block_height": 1004,
+   "timestamp": "2026-03-31T08:12:36.000+00:00",
+   "extrinsic_id": "0x5000000000000000000000000000000000000000000000000000000000000004"
+  }
+ ]
+}
